@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>夢結び | 水引アクセサリー・和雑貨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #6245a8;
+      --bg2:      #7257bc;
+      --bg3:      #8268ce;
+      --gold:     #f0c848;
+      --gold2:    #ffe080;
+      --pink:     #f07ab8;
+      --paper:    #ffffff;
+      --paper2:   #e8d8f8;
+      --border:   rgba(255,220,100,0.35);
+      --radius:   12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--paper);
+      font-family: 'Noto Serif JP', serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ======== SCROLLBAR ======== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ======== NAV ======== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(70,48,150,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      font-size: 0.7em;
+      font-weight: 300;
+      color: var(--paper2);
+      display: block;
+      letter-spacing: 0.3em;
+      margin-top: -4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--paper2);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--bg) !important;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 500 !important;
+      transition: background 0.3s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold2) !important; color: var(--bg) !important; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ======== HERO ======== */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.35);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.12); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(12,8,21,0.3) 0%,
+        rgba(92,30,60,0.15) 50%,
+        rgba(12,8,21,0.6) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      line-height: 1.1;
+      color: #fff;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+
+    .hero-title .gold { color: var(--gold); }
+
+    .hero-subtitle {
+      margin-top: 20px;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      color: var(--paper2);
+      opacity: 0;
+      animation: fadeUp 1s 0.8s forwards;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      opacity: 0;
+      animation: fadeUp 1s 1s forwards;
+    }
+
+    .badge {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--paper2);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-cta {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212,168,67,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 2s forwards;
+    }
+
+    .hero-scroll span {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--paper2);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease infinite;
+    }
+
+    @keyframes scrollLine {
+      0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50%  { opacity: 1; transform: scaleY(1); }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ======== SECTION BASE ======== */
+    section {
+      padding: 100px 20px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--paper);
+    }
+
+    .section-title .accent { color: var(--gold); }
+
+    .section-desc {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--paper2);
+      letter-spacing: 0.05em;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 24px auto 0;
+    }
+
+    /* ======== CONCEPT ======== */
+    #concept {
+      background: var(--bg2);
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .concept-images {
+      position: relative;
+      height: 480px;
+    }
+
+    .concept-img-main {
+      position: absolute;
+      right: 0; top: 0;
+      width: 70%;
+      height: 85%;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .concept-img-sub {
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 50%;
+      height: 55%;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .concept-text h3 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .concept-text h3 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .concept-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--paper2);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .concept-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      color: var(--paper2);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* ======== CATEGORIES ======== */
+    #products {
+      background: var(--bg);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .category-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      group: true;
+      border: 1px solid var(--border);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .category-card.wide {
+      grid-column: span 2;
+    }
+
+    .category-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+      filter: brightness(0.75);
+    }
+
+    .category-card.wide .category-img {
+      aspect-ratio: 16/9;
+    }
+
+    .category-card:hover .category-img {
+      transform: scale(1.06);
+      filter: brightness(0.55);
+    }
+
+    .category-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 24px 24px;
+      background: linear-gradient(to top, rgba(12,8,21,0.95) 0%, transparent 100%);
+    }
+
+    .category-tag {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .category-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #fff;
+    }
+
+    .category-price {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--paper2);
+      margin-top: 4px;
+    }
+
+    .category-arrow {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(212,168,67,0.15);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .category-card:hover .category-arrow { opacity: 1; }
+
+    /* ======== GALLERY ======== */
+    #gallery {
+      background: var(--bg2);
+    }
+
+    .gallery-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .gallery-tab {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--paper2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .gallery-tab.active,
+    .gallery-tab:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .gallery-item.hidden { display: none; }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .gallery-item:first-child img {
+      aspect-ratio: auto;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(12,8,21,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-overlay span {
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    /* ======== LIGHTBOX ======== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: default;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 1.8rem;
+      color: var(--paper2);
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .lightbox-close:hover { color: var(--gold); }
+
+    /* ======== ORDER INFO ======== */
+    #order {
+      background: var(--bg);
+    }
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .order-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .order-box h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .price-table tr {
+      border-bottom: 1px solid rgba(212,168,67,0.1);
+    }
+
+    .price-table td {
+      padding: 12px 4px;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .price-table td:first-child {
+      color: var(--paper2);
+      width: 55%;
+    }
+
+    .price-table td:last-child {
+      text-align: right;
+      color: var(--gold2);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .order-flow {
+      list-style: none;
+      counter-reset: flow;
+    }
+
+    .order-flow li {
+      counter-increment: flow;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(212,168,67,0.1);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--paper2);
+    }
+
+    .order-flow li::before {
+      content: counter(flow);
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: 'Noto Sans JP', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shop-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .shop-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      text-decoration: none;
+      color: var(--paper);
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: all 0.3s;
+    }
+
+    .shop-link:hover {
+      border-color: var(--gold);
+      background: rgba(212,168,67,0.08);
+      transform: translateX(4px);
+    }
+
+    .shop-link-badge {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 10px;
+      background: rgba(212,168,67,0.15);
+      color: var(--gold);
+    }
+
+    /* ======== PROFILE ======== */
+    #profile {
+      background: var(--bg2);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .profile-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .profile-img-wrap {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .profile-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    .profile-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, var(--bg3), transparent);
+    }
+
+    .profile-card-body {
+      padding: 24px 28px 32px;
+    }
+
+    .profile-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--paper);
+    }
+
+    .profile-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    .profile-since {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      color: var(--paper2);
+      margin-top: 12px;
+    }
+
+    .profile-sns {
+      margin-top: 20px;
+    }
+
+    .profile-sns a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      color: var(--paper2);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .profile-sns a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .profile-text h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .profile-text h3 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .profile-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--paper2);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .profile-tag {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--paper2);
+    }
+
+    .profile-tag.highlight {
+      background: rgba(212,168,67,0.15);
+      border-color: rgba(212,168,67,0.5);
+      color: var(--gold);
+    }
+
+    /* ======== INSTAGRAM ======== */
+    #instagram {
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .instagram-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85rem;
+      color: var(--paper2);
+      margin-bottom: 48px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 12px 28px;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+
+    .instagram-cta:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+      box-shadow: 0 0 20px rgba(201,75,126,0.2);
+    }
+
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .insta-item {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .insta-item:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .insta-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ======== CONTACT ======== */
+    #contact {
+      background: var(--bg2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .contact-info h3 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .contact-info p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--paper2);
+      margin-bottom: 16px;
+    }
+
+    .contact-note {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 32px;
+    }
+
+    .contact-note h4 {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .contact-note ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-note li {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--paper2);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .contact-note li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .contact-form {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--paper2);
+      margin-bottom: 8px;
+    }
+
+    .form-label .required {
+      color: var(--pink);
+      margin-left: 4px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--paper);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8b89a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 12px;
+      cursor: pointer;
+    }
+
+    .form-select option { background: var(--bg3); }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+      font-family: 'Noto Serif JP', serif;
+      letter-spacing: 0.2em;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .form-success p {
+      font-size: 0.95rem;
+      color: var(--paper2);
+    }
+
+    /* ======== FOOTER ======== */
+    footer {
+      background: #4a3390;
+      border-top: 1px solid var(--border);
+      padding: 48px 40px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .nav-logo {
+      display: inline-block;
+      font-size: 1.5rem;
+    }
+
+    .footer-brand p {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--paper2);
+      max-width: 280px;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 60px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--paper2);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-copy {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--paper2);
+      opacity: 0.6;
+    }
+
+    .access-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 8px 20px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.8rem;
+      color: var(--paper2);
+    }
+
+    .access-counter .count-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    /* ======== REVEAL ANIMATION ======== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ======== MOBILE NAV ======== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(12,8,21,0.97);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--paper);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .concept-grid,
+      .order-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-card { max-width: 360px; margin: 0 auto; }
+
+      .concept-images { height: 300px; }
+
+      .category-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .category-card.wide { grid-column: span 2; }
+
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-item:first-child { grid-column: span 1; grid-row: span 1; }
+
+      .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .footer-top { flex-direction: column; gap: 32px; }
+      .footer-links { gap: 32px; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 64px 16px; }
+      .category-grid { grid-template-columns: 1fr; }
+      .category-card.wide { grid-column: span 1; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-links { flex-direction: column; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .contact-form { padding: 24px 20px; }
+      .order-box { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#" class="nav-logo">
+    夢結び
+    <span>YUME MUSUBI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#concept">コンセプト</a></li>
+    <li><a href="#products">商品</a></li>
+    <li><a href="#gallery">ギャラリー</a></li>
+    <li><a href="#order">ご注文</a></li>
+    <li><a href="#profile">作家</a></li>
+    <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- モバイルメニュー -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#concept"   onclick="closeMobileMenu()">コンセプト</a>
+  <a href="#products"  onclick="closeMobileMenu()">商品</a>
+  <a href="#gallery"   onclick="closeMobileMenu()">ギャラリー</a>
+  <a href="#order"     onclick="closeMobileMenu()">ご注文</a>
+  <a href="#profile"   onclick="closeMobileMenu()">作家</a>
+  <a href="#contact"   onclick="closeMobileMenu()">お問い合わせ</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">水引作家 しし | Mizuhiki Artisan</p>
+    <h1 class="hero-title">夢<span class="gold">結</span>び</h1>
+    <p class="hero-subtitle">一本の水引に、想いを結ぶ</p>
+    <div class="hero-badges">
+      <span class="badge"># イヤリング・ピアス</span>
+      <span class="badge"># ブローチ</span>
+      <span class="badge"># ストラップ</span>
+      <span class="badge"># LEDランプカバー</span>
+      <span class="badge"># 推し活向け</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#products" class="btn btn-primary">作品をみる</a>
+      <a href="#contact"  class="btn btn-secondary">オーダーを相談する</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== CONCEPT ===== -->
+<section id="concept">
+  <div class="section-inner">
+    <div class="concept-grid">
+      <div class="concept-images reveal">
+        <img class="concept-img-main" src="images/earring_dangling_red.jpg"   alt="水引イヤリング">
+        <img class="concept-img-sub"  src="images/brooch_collection.jpg"       alt="水引ブローチコレクション">
+      </div>
+      <div class="concept-text reveal">
+        <p class="section-eyebrow">CONCEPT</p>
+        <h3>推しの色を、<br>身にまとう<em>喜び</em>へ</h3>
+        <p>水引は「人と人をつなぐ」縁起紐として古来より愛されてきた日本の伝統素材。夢結びでは、その豊かなカラーバリエーションを活かし、推し活を楽しむすべての人に向けた作品を制作しています。</p>
+        <p>白は清らかさ、赤は絆、金は繁栄を象徴する水引。推しのイメージカラーにあわせて選べるアイテムで、ライブやイベントをより特別な日にしてください。</p>
+        <p>贈答用・ウェディングなどオーダーも承っております。</p>
+        <div class="concept-stats">
+          <div class="stat-item">
+            <div class="stat-num">10</div>
+            <div class="stat-label">年の経験</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">販売プラットフォーム</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">多数</div>
+            <div class="stat-label">オリジナル商品</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">PRODUCTS</p>
+      <h2 class="section-title">商品<span class="accent">カテゴリ</span></h2>
+      <p class="section-desc">推し活から日常使い、贈り物まで。あなたのライフスタイルに寄り添う水引作品</p>
+      <div class="divider"></div>
+    </div>
+    <div class="category-grid">
+      <!-- ピアス・イヤリング -->
+      <div class="category-card wide reveal" data-cat="earring">
+        <img class="category-img" src="images/earring_dangling_silver.jpg" alt="ピアス・イヤリング">
+        <div class="category-arrow">→</div>
+        <div class="category-info">
+          <p class="category-tag">Accessories</p>
+          <p class="category-name">ピアス・イヤリング</p>
+          <p class="category-price">¥2,000 〜 ¥3,000</p>
+        </div>
+      </div>
+      <!-- ブローチ -->
+      <div class="category-card reveal" data-cat="brooch">
+        <img class="category-img" src="images/brooch_blue.jpg" alt="ブローチ">
+        <div class="category-arrow">→</div>
+        <div class="category-info">
+          <p class="category-tag">Accessories</p>
+          <p class="category-name">ブローチ</p>
+          <p class="category-price">¥3,500</p>
+        </div>
+      </div>
+      <!-- ストラップ -->
+      <div class="category-card reveal" data-cat="strap">
+        <img class="category-img" src="images/charm_display.jpg" alt="ストラップ・チャーム">
+        <div class="category-arrow">→</div>
+        <div class="category-info">
+          <p class="category-tag">Accessories</p>
+          <p class="category-name">ストラップ・チャーム</p>
+          <p class="category-price">¥1,500</p>
+        </div>
+      </div>
+      <!-- LEDランプカバー -->
+      <div class="category-card reveal" data-cat="interior">
+        <img class="category-img" src="images/brooch_group.jpg" alt="LEDランプカバー">
+        <div class="category-arrow">→</div>
+        <div class="category-info">
+          <p class="category-tag">Interior</p>
+          <p class="category-name">LEDランプカバー</p>
+          <p class="category-price">¥3,000 〜 ¥6,000</p>
+        </div>
+      </div>
+      <!-- 御朱印帳バンド -->
+      <div class="category-card reveal" data-cat="misc">
+        <img class="category-img" src="images/brooch_red.jpg" alt="御朱印帳バンド">
+        <div class="category-arrow">→</div>
+        <div class="category-info">
+          <p class="category-tag">Goods</p>
+          <p class="category-name">御朱印帳バンド</p>
+          <p class="category-price">¥500</p>
+        </div>
+      </div>
+      <!-- ウェディング -->
+      <div class="category-card reveal" data-cat="wedding">
+        <img class="category-img" src="images/earring_kimono_red.jpg" alt="ウェディング">
+        <div class="category-arrow">→</div>
+        <div class="category-info">
+          <p class="category-tag">Coming Soon</p>
+          <p class="category-name">ウェディング</p>
+          <p class="category-price">製作予定 / 要お問い合わせ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">GALLERY</p>
+      <h2 class="section-title">作品<span class="accent">ギャラリー</span></h2>
+      <p class="section-desc">豊富なカラーバリエーションから、あなたの推しカラーをみつけてください</p>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-tabs reveal">
+      <button class="gallery-tab active" data-filter="all">すべて</button>
+      <button class="gallery-tab" data-filter="earring">ピアス・イヤリング</button>
+      <button class="gallery-tab" data-filter="brooch">ブローチ</button>
+      <button class="gallery-tab" data-filter="other">その他</button>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_dangling_red.jpg" alt="水引ピアス 赤">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_stud_bk.jpg" alt="水引ピアス 黒×白">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_stud_navy.jpg" alt="水引ピアス ネイビー">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_stud_gold.jpg" alt="水引ピアス ゴールド">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_stud_red.jpg" alt="水引ピアス 赤">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_stud_silver.jpg" alt="水引ピアス シルバー">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_kimono_red.jpg" alt="水引イヤリング 着物 赤">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_kimono_gold.jpg" alt="水引ピアス 着物 ゴールド">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_purple.jpg" alt="水引イヤリング 紫">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="earring">
+        <img src="images/earring_dangling_silver.jpg" alt="水引ピアス シルバー ロング">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_group.jpg" alt="水引ブローチ コレクション">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_yellow.jpg" alt="水引ブローチ 黄">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_blue.jpg" alt="水引ブローチ 青">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_orange.jpg" alt="水引ブローチ オレンジ">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_white.jpg" alt="水引ブローチ 白">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_red.jpg" alt="水引ブローチ 赤">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_pink.jpg" alt="水引ブローチ ピンク">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_black_gold.jpg" alt="水引ブローチ 黒×金">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="brooch">
+        <img src="images/brooch_teal.jpg" alt="水引ブローチ ティール">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="other">
+        <img src="images/charm_display.jpg" alt="水引チャーム ディスプレイ">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" data-type="other">
+        <img src="images/brooch_collection.jpg" alt="水引ブローチ 棚展示">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ライトボックス -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-close" onclick="closeLightbox()">✕</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ===== ORDER ===== -->
+<section id="order">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">ORDER &amp; SHOP</p>
+      <h2 class="section-title">ご注文・<span class="accent">購入方法</span></h2>
+      <p class="section-desc">お問い合わせフォームからのオーダー受付、各種プラットフォームでの販売に対応しています</p>
+      <div class="divider"></div>
+    </div>
+    <div class="order-grid">
+      <div class="order-box reveal">
+        <h3>価格目安</h3>
+        <table class="price-table">
+          <tr><td>ポストピアス（叶え結び）</td><td>¥2,000</td></tr>
+          <tr><td>ピアス・イヤリング（ひまわり）</td><td>¥2,500</td></tr>
+          <tr><td>ピアス（クリスタルタッセル）</td><td>¥2,800</td></tr>
+          <tr><td>ピアス（蝶デザイン）</td><td>¥3,000</td></tr>
+          <tr><td>ブローチ（ひまわり・椿）</td><td>¥3,500</td></tr>
+          <tr><td>水引目印チャーム（猫）</td><td>¥1,500</td></tr>
+          <tr><td>水引バンド（御朱印帳・手帳等）</td><td>¥500</td></tr>
+          <tr><td>LEDキャンドルカバー</td><td>¥3,000 〜 ¥3,500</td></tr>
+          <tr><td>LEDキャンドルカバー（特殊デザイン）</td><td>¥6,000</td></tr>
+          <tr><td>水引しめ縄</td><td>¥800 〜 ¥1,200</td></tr>
+          <tr><td>オーダーメイド・贈答用</td><td>要お問い合わせ</td></tr>
+          <tr><td>ウェディングアイテム</td><td>製作予定・要お問い合わせ</td></tr>
+        </table>
+        <p style="margin-top:16px; font-size:0.75rem; color:var(--paper2); font-family:'Noto Sans JP',sans-serif;">
+          ※ 価格は商品・カラーにより変動します。詳細はお問い合わせください。
+        </p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <div class="order-box reveal">
+          <h3>オーダーの流れ</h3>
+          <ol class="order-flow">
+            <li>お問い合わせフォームよりご要望をお送りください（カラー・種類・用途など）</li>
+            <li>制作可否・お見積もりをご連絡します（目安：数日以内）</li>
+            <li>ご確認いただき正式にご注文確定</li>
+            <li>制作・発送（納期はご注文内容により異なります）</li>
+          </ol>
+        </div>
+        <div class="order-box reveal">
+          <h3>オンラインショップ</h3>
+          <div class="shop-links">
+            <a class="shop-link" href="https://minne.com" target="_blank" rel="noopener">
+              <span>minne</span>
+              <span class="shop-link-badge">販売中</span>
+            </a>
+            <a class="shop-link" href="https://www.creema.jp" target="_blank" rel="noopener">
+              <span>Creema</span>
+              <span class="shop-link-badge">販売中</span>
+            </a>
+            <a class="shop-link" href="https://booth.pm" target="_blank" rel="noopener">
+              <span>BOOTH</span>
+              <span class="shop-link-badge">販売中</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROFILE ===== -->
+<section id="profile">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">ARTIST PROFILE</p>
+      <h2 class="section-title">水引作家<span class="accent">しし</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-card reveal">
+        <div class="profile-img-wrap">
+          <img src="images/earring_kimono_gold2.jpg" alt="作家しし">
+        </div>
+        <div class="profile-card-body">
+          <p class="profile-name">しし</p>
+          <p class="profile-title">水引作家 / Mizuhiki Artisan</p>
+          <p class="profile-since">夢結び代表 ｜ 活動開始 2024年4月</p>
+          <div class="profile-sns">
+            <a href="https://www.instagram.com/sisinoyumemusubi/" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              @sisinoyumemusubi
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="profile-text reveal">
+        <h3>水引に込めた、<br><em>「人をつなぐ」</em>という願い</h3>
+        <p>水引に触れて10年。「人と人をつなぐ」という水引本来の意味に魅了され、その可能性を追い求めてきました。2024年4月、作家名「しし」として「夢結び」を立ち上げ、本格的に活動を開始。</p>
+        <p>水引ならではの鮮やかなカラーバリエーションを最大限に活かし、推し活を楽しむすべての人に向けたアクセサリー・雑貨を制作しています。推しのイメージカラーで「自分だけの一点」を身につける喜びを、ぜひ体験してください。</p>
+        <p>minne・Creema・BOOTHにて常時出品中のほか、贈答品・ウェディングアイテムなどオーダーメイドも受け付けております。お気軽にご相談ください。</p>
+        <div class="profile-tags">
+          <span class="profile-tag highlight"># 推し活</span>
+          <span class="profile-tag highlight"># 推しカラー</span>
+          <span class="profile-tag"># 水引アクセサリー</span>
+          <span class="profile-tag"># 和雑貨</span>
+          <span class="profile-tag"># ハンドメイド</span>
+          <span class="profile-tag"># オリジナル</span>
+          <span class="profile-tag"># オーダーメイド</span>
+          <span class="profile-tag"># 贈り物</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM ===== -->
+<section id="instagram">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">INSTAGRAM</p>
+      <h2 class="section-title">最新の<span class="accent">作品情報</span></h2>
+      <p class="section-desc">Instagramで最新作や制作の裏側を発信しています</p>
+      <div class="divider"></div>
+    </div>
+    <div class="reveal">
+      <a class="instagram-cta" href="https://www.instagram.com/sisinoyumemusubi/" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        @sisinoyumemusubi をフォローする
+      </a>
+    </div>
+    <div class="instagram-grid reveal">
+      <div class="insta-item"><img src="images/earring_kimono_red.jpg"    alt=""></div>
+      <div class="insta-item"><img src="images/brooch_orange.jpg"          alt=""></div>
+      <div class="insta-item"><img src="images/earring_stud_gold.jpg"      alt=""></div>
+      <div class="insta-item"><img src="images/brooch_red.jpg"             alt=""></div>
+      <div class="insta-item"><img src="images/earring_purple.jpg"         alt=""></div>
+      <div class="insta-item"><img src="images/brooch_yellow.jpg"          alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">CONTACT</p>
+      <h2 class="section-title">お<span class="accent">問い合わせ</span></h2>
+      <p class="section-desc">オーダー・ご質問・贈答相談など、お気軽にどうぞ</p>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>一本一本、<br><em>想いを込めて</em>制作します</h3>
+        <p>推しカラーのオーダー、ウェディング用アイテム、贈答品など、どんなご相談でもお気軽にお問い合わせください。</p>
+        <p>フォームからお送りいただいたメッセージには、数日以内に返信いたします。</p>
+        <div class="contact-note">
+          <h4>お問い合わせの前にご確認ください</h4>
+          <ul>
+            <li>オーダー内容により納期が異なります</li>
+            <li>受注状況によってはお断りする場合があります</li>
+            <li>ウェディングアイテムは現在製作準備中です</li>
+            <li>価格はお見積もり後の確定となります</li>
+          </ul>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-group">
+            <label class="form-label">お名前 <span class="required">*</span></label>
+            <input class="form-input" type="text" name="name" placeholder="山田 花子" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">メールアドレス <span class="required">*</span></label>
+            <input class="form-input" type="email" name="email" placeholder="example@mail.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">お問い合わせ種別 <span class="required">*</span></label>
+            <select class="form-select" name="type" required>
+              <option value="" disabled selected>選択してください</option>
+              <option value="order">オーダー・制作依頼</option>
+              <option value="product">商品について</option>
+              <option value="wedding">ウェディングアイテム</option>
+              <option value="gift">贈答品・ギフト相談</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ご希望カラー・イメージ</label>
+            <input class="form-input" type="text" name="color" placeholder="例）推しカラーは青紫です、赤×金でお願いしたい　など">
+          </div>
+          <div class="form-group">
+            <label class="form-label">メッセージ <span class="required">*</span></label>
+            <textarea class="form-textarea" name="message" placeholder="ご要望・ご質問をお気軽にどうぞ" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">送信する</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✉️</div>
+          <p style="font-size:1.1rem; color:var(--gold); margin-bottom:12px;">送信が完了しました</p>
+          <p>数日以内にご返信いたします。<br>しばらくお待ちください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo">
+          夢結び
+          <span>YUME MUSUBI</span>
+        </a>
+        <p>水引作家 しし による、推し活向け水引アクセサリー・和雑貨のブランド。一本一本手作りで制作しています。</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>MENU</h4>
+          <ul>
+            <li><a href="#concept">コンセプト</a></li>
+            <li><a href="#products">商品カテゴリ</a></li>
+            <li><a href="#gallery">ギャラリー</a></li>
+            <li><a href="#order">ご注文・価格</a></li>
+            <li><a href="#profile">作家プロフィール</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="https://minne.com" target="_blank" rel="noopener">minne</a></li>
+            <li><a href="https://www.creema.jp" target="_blank" rel="noopener">Creema</a></li>
+            <li><a href="https://booth.pm" target="_blank" rel="noopener">BOOTH</a></li>
+          </ul>
+          <h4 style="margin-top:24px;">SNS</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/sisinoyumemusubi/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 夢結び / 水引作家 しし . All rights reserved.</p>
+      <div class="access-counter">
+        <span>👁 アクセス数</span>
+        <span class="count-num" id="accessCount">0</span>
+        <span>回</span>
+      </div>
+      <p class="footer-copy">ryuot103@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ===== NAV HAMBURGER ===== */
+  const hamburger   = document.getElementById('hamburger');
+  const mobileMenu  = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* ===== GALLERY FILTER ===== */
+  const tabs  = document.querySelectorAll('.gallery-tab');
+  const items = document.querySelectorAll('.gallery-item');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const filter = tab.dataset.filter;
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.type === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  /* ===== LIGHTBOX ===== */
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const src = item.querySelector('img').src;
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox(e) {
+    if (!e || e.target !== document.getElementById('lightboxImg')) {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  /* ===== CONTACT FORM ===== */
+  function submitForm(e) {
+    e.preventDefault();
+    const form  = document.getElementById('contactForm');
+    const data  = new FormData(form);
+    const name  = data.get('name');
+    const email = data.get('email');
+    const type  = data.get('type');
+    const color = data.get('color') || '（未記入）';
+    const msg   = data.get('message');
+
+    const subject = encodeURIComponent(`【夢結び お問い合わせ】${type} - ${name} 様`);
+    const body    = encodeURIComponent(
+      `お名前：${name}\nメール：${email}\n種別：${type}\nカラー：${color}\n\n${msg}`
+    );
+
+    window.location.href = `mailto:ryuot103@gmail.com?subject=${subject}&body=${body}`;
+
+    form.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  /* ===== ACCESS COUNTER ===== */
+  (function() {
+    const key = 'yumemusubi_visits';
+    let count = parseInt(localStorage.getItem(key) || '0') + 1;
+    localStorage.setItem(key, count);
+    const el = document.getElementById('accessCount');
+    let current = 0;
+    const step = Math.ceil(count / 40);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, count);
+      el.textContent = current.toLocaleString('ja-JP');
+      if (current >= count) clearInterval(timer);
+    }, 30);
+  })();
+
+  /* ===== NAV ACTIVE ON SCROLL ===== */
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 50
+      ? 'rgba(12,8,21,0.97)'
+      : 'rgba(12,8,21,0.85)';
+  });
+</script>
+
+</body>
+</html>
